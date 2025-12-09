@@ -12,35 +12,46 @@ h1, h2, h3 {
     padding: 0;
     font-weight: 700;
 }
-/* Общие стили для секций */
-.about-section, .services-section {
-    max-width: 900px;
+
+.about-section {
+    max-width: 800px;
     margin: 0 auto 80px;
     padding: 0 20px;
+    text-align: center;
 }
 
-/* Заголовки */
-.about-section h2,
-.services-section h2 {
-    font-size: 36px;
-    font-weight: 700;
-    color: #d7cfc1; /* мягкий бежевый */
-    text-align: center;
-    margin-bottom: 30px;
-    letter-spacing: 2px;
+.about-section h2 {
+    font-size: 38px;
+    font-weight: 800;
+    color: #f0e9d2; /* мягкий светлый оттенок */
+    letter-spacing: 3px;
     text-transform: uppercase;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 6px rgba(34, 85, 255, 0.6);
 }
 
-/* Абзац "О компании" */
 .about-section p {
-    font-size: 19px;
-    line-height: 1.8;
-    color: #ccc9c0;
-    text-align: center;
+    font-size: 20px;
+    line-height: 1.7;
+    color: #ddd8cc;
     font-weight: 400;
-    max-width: 700px;
+    max-width: 650px;
     margin: 0 auto;
-    white-space: pre-line; /* чтобы переносы строки работали */
+    white-space: pre-line;
+}
+
+.about-section p strong {
+    color: #2255ff;
+    font-weight: 700;
+}
+
+.about-section .highlight {
+    color: #5599ff; /* fallback цвет на случай, если не поддерживается */
+    font-weight: 700;
+    background: linear-gradient(90deg, #5599ff 0%, #88bbff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* Карточки услуг — горизонтальная сетка */
@@ -73,11 +84,75 @@ h1, h2, h3 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     font-weight: 400;
 }
+/* ===== Портфолио / Опыт работы ===== */
+.portfolio-section {
+    max-width: 900px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+}
+
+.portfolio-section h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #d7cfc1; /* мягкий бежевый */
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.portfolio-section .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+@media (max-width: 900px) {
+    .portfolio-section .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .portfolio-section .cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+.portfolio-section .card {
+    background: #222222;
+    padding: 28px 24px;
+    border-radius: 14px;
+    border: 1px solid #444444;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.6);
+    color: #d7cfc1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-weight: 400;
+}
+
+.portfolio-section .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.8);
+}
+
+.portfolio-section .card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #eee8df;
+}
+
+.portfolio-section .card p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #cbc4b8;
+}
 
 .card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 28px rgba(0,0,0,0.8);
 }
+
 
 /* Заголовок в карточках */
 .card h3 {
