@@ -123,6 +123,75 @@ h1, h2, h3 {
     line-height: 1.6;
     color: #cbc4b8;
 }
+/* ===== Секция "Связаться с нами" ===== */
+.contact-section {
+    max-width: 600px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #d7cfc1;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 6px rgba(34, 85, 255, 0.4);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.contact-form label {
+    font-weight: 600;
+    color: #ccc5b9;
+    text-align: left;
+    margin-bottom: 6px;
+    font-size: 16px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1px solid #444444;
+    background: #222222;
+    color: #ddd8cc;
+    font-size: 16px;
+    font-family: "Segoe UI", sans-serif;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #5599ff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(85, 153, 255, 0.6);
+}
+
+.contact-form button {
+    padding: 14px 32px;
+    border-radius: 8px;
+    background: #2255ff;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-form button:hover {
+    background: #5580ff;
+    transform: translateY(-3px);
+}
+
 
 /* ===== HERO (главный экран) ===== */
 .hero {
