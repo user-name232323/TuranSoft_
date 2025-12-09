@@ -27,7 +27,12 @@ h1, h2, h3 {
     object-fit: contain;
     margin-bottom: 20px;
     animation: float 4s ease-in-out infinite;
+
+    /* Цветное свечение по бокам без чёрных линий */
+    filter: drop-shadow(-12px 0 15px rgba(34, 85, 255, 0.8))
+            drop-shadow(12px 0 15px rgba(34, 85, 255, 0.8));
 }
+
 
 .title {
     font-size: 64px;
