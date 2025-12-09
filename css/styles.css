@@ -12,6 +12,87 @@ h1, h2, h3 {
     padding: 0;
     font-weight: 700;
 }
+/* Общие стили для секций */
+.about-section, .services-section {
+    max-width: 900px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+}
+
+/* Заголовки */
+.about-section h2,
+.services-section h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #d7cfc1; /* мягкий бежевый */
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Абзац "О компании" */
+.about-section p {
+    font-size: 19px;
+    line-height: 1.8;
+    color: #ccc9c0;
+    text-align: center;
+    font-weight: 400;
+    max-width: 700px;
+    margin: 0 auto;
+    white-space: pre-line; /* чтобы переносы строки работали */
+}
+
+/* Карточки услуг — горизонтальная сетка */
+.services-section .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 900px) {
+    .services-section .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 600px) {
+    .services-section .cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Карточки */
+.card {
+    background: #222222;
+    padding: 28px 24px;
+    border-radius: 14px;
+    border: 1px solid #444444;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.6);
+    color: #d7cfc1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-weight: 400;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.8);
+}
+
+/* Заголовок в карточках */
+.card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #eee8df;
+}
+
+/* Текст в карточках */
+.card p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #cbc4b8;
+}
 
 /* ===== HERO (главный экран) ===== */
 .hero {
