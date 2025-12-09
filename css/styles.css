@@ -70,6 +70,17 @@ h1, h2, h3 {
     background-clip: text;
 }
 
+/* Добавляем флекс-контейнер для текста и ярлыка */
+.about-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+    text-align: left;
+}
+
 /* Сетки карточек услуг и портфолио */
 .services-section .cards,
 .portfolio-section .cards {
@@ -83,6 +94,12 @@ h1, h2, h3 {
     .services-section .cards,
     .portfolio-section .cards {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-wrapper {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
     }
 }
 
@@ -261,25 +278,25 @@ footer {
 
 /* ===== Специалист Ярлык с портфолио при наведении ===== */
 .specialist-badge {
-    position: fixed;
-    bottom: 40px;
-    right: 40px;
-    background: #222222;
-    border: 2px solid #5599ff;
+    position: relative;
+    background: #2f3542; /* темно-серый с легким синим оттенком */
+    border: 2px solid #6c7a89; /* серо-голубой */
     border-radius: 14px;
-    padding: 10px 15px;
+    padding: 12px 18px;
     display: flex;
     align-items: center;
     cursor: pointer;
-    z-index: 9999;
-    box-shadow: 0 6px 20px rgba(34, 85, 255, 0.6);
-    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 15px rgba(108, 122, 137, 0.4);
     width: 240px;
     user-select: none;
+    flex-shrink: 0;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .specialist-badge:hover {
-    background-color: #2a2a2a;
+    background-color: #3c4758; /* чуть светлее фон при ховере */
+    border-color: #a0b1c3; /* светлый серо-голубой */
+    box-shadow: 0 6px 22px rgba(160, 177, 195, 0.6);
 }
 
 /* Фото рядом с именем */
@@ -288,32 +305,41 @@ footer {
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #5599ff;
+    border: 2px solid #6c7a89; /* серо-голубой */
     margin-right: 15px;
-    flex-shrink: 0;
+    transition: border-color 0.3s ease;
+}
+
+.specialist-badge:hover .specialist-photo {
+    border-color: #a0b1c3;
 }
 
 /* Имя специалиста */
 .specialist-name {
-    color: #5599ff;
-    font-weight: 700;
+    color: #a0b1c3; /* мягкий голубой-серый */
+    font-weight: 600;
     font-size: 18px;
     white-space: nowrap;
+    transition: color 0.3s ease;
 }
 
-/* Всплывающая секция портфолио - изначально скрыта */
+.specialist-badge:hover .specialist-name {
+    color: #d0d8e8; /* светло-серый с голубым оттенком */
+}
+
+/* Всплывающая секция портфолио */
 .portfolio-popup {
     position: absolute;
     bottom: 60px; /* над ярлыком */
     right: 0;
     width: 380px;
     max-height: 400px;
-    background: #222222;
-    border: 2px solid #5599ff;
+    background: #3c4758; /* темный, нейтральный фон */
+    border: 2px solid #6c7a89;
     border-radius: 14px;
     padding: 20px;
-    box-shadow: 0 12px 40px rgba(34, 85, 255, 0.8);
-    color: #d7cfc1;
+    box-shadow: 0 10px 35px rgba(108, 122, 137, 0.7);
+    color: #cfd6e4;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -323,7 +349,6 @@ footer {
     z-index: 10000;
 }
 
-/* Появление при наведении на родителя */
 .specialist-badge:hover .portfolio-popup {
     opacity: 1;
     visibility: visible;
@@ -335,7 +360,7 @@ footer {
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 22px;
-    color: #5599ff;
+    color: #a0b1c3;
     text-align: center;
 }
 
@@ -347,12 +372,12 @@ footer {
 }
 
 .portfolio-popup .card {
-    background: #333333;
-    border: 1px solid #5599ff;
+    background: #2f3640;
+    border: 1px solid #6c7a89;
     padding: 12px 15px;
     border-radius: 10px;
     box-shadow: none;
-    color: #ccc5b9;
+    color: #cfd6e4;
     font-size: 13px;
     line-height: 1.4;
     transition: none;
@@ -361,12 +386,12 @@ footer {
 .portfolio-popup .card h3 {
     font-size: 16px;
     margin-bottom: 8px;
-    color: #a0c4ff;
+    color: #8f9bb3;
 }
 
 .portfolio-popup .card p {
     margin: 2px 0;
-    color: #d7d4ce;
+    color: #b0b9cc;
 }
 
 /* Стили полосы прокрутки для всплывающего окна */
@@ -375,10 +400,10 @@ footer {
 }
 
 .portfolio-popup::-webkit-scrollbar-thumb {
-    background-color: #5599ff;
+    background-color: #6c7a89;
     border-radius: 6px;
 }
 
 .portfolio-popup::-webkit-scrollbar-track {
-    background-color: #222222;
+    background-color: #2f3640;
 }
