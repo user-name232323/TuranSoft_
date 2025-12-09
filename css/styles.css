@@ -33,7 +33,8 @@ h1, h2, h3 {
 /* Заголовки секций */
 .about-section h2,
 .portfolio-section h2,
-.services-section h2 {
+.services-section h2,
+.contact-section h2 {
     font-size: 36px;
     font-weight: 700;
     color: #d7cfc1; /* мягкий бежевый */
@@ -123,22 +124,13 @@ h1, h2, h3 {
     line-height: 1.6;
     color: #cbc4b8;
 }
+
 /* ===== Секция "Связаться с нами" ===== */
 .contact-section {
     max-width: 600px;
     margin: 0 auto 80px;
     padding: 0 20px;
     text-align: center;
-}
-
-.contact-section h2 {
-    font-size: 36px;
-    font-weight: 700;
-    color: #d7cfc1;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 30px;
-    text-shadow: 0 2px 6px rgba(34, 85, 255, 0.4);
 }
 
 .contact-form {
@@ -191,7 +183,6 @@ h1, h2, h3 {
     background: #5580ff;
     transform: translateY(-3px);
 }
-
 
 /* ===== HERO (главный экран) ===== */
 .hero {
@@ -265,4 +256,129 @@ footer {
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
+}
+
+
+/* ===== Специалист Ярлык с портфолио при наведении ===== */
+.specialist-badge {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background: #222222;
+    border: 2px solid #5599ff;
+    border-radius: 14px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 6px 20px rgba(34, 85, 255, 0.6);
+    transition: background-color 0.3s ease;
+    width: 240px;
+    user-select: none;
+}
+
+.specialist-badge:hover {
+    background-color: #2a2a2a;
+}
+
+/* Фото рядом с именем */
+.specialist-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #5599ff;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+/* Имя специалиста */
+.specialist-name {
+    color: #5599ff;
+    font-weight: 700;
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+/* Всплывающая секция портфолио - изначально скрыта */
+.portfolio-popup {
+    position: absolute;
+    bottom: 60px; /* над ярлыком */
+    right: 0;
+    width: 380px;
+    max-height: 400px;
+    background: #222222;
+    border: 2px solid #5599ff;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 12px 40px rgba(34, 85, 255, 0.8);
+    color: #d7cfc1;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    overflow-y: auto;
+    font-size: 14px;
+    z-index: 10000;
+}
+
+/* Появление при наведении на родителя */
+.specialist-badge:hover .portfolio-popup {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Заголовок всплывающей секции */
+.portfolio-popup h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 22px;
+    color: #5599ff;
+    text-align: center;
+}
+
+/* Карточки внутри всплывашки */
+.portfolio-popup .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.portfolio-popup .card {
+    background: #333333;
+    border: 1px solid #5599ff;
+    padding: 12px 15px;
+    border-radius: 10px;
+    box-shadow: none;
+    color: #ccc5b9;
+    font-size: 13px;
+    line-height: 1.4;
+    transition: none;
+}
+
+.portfolio-popup .card h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #a0c4ff;
+}
+
+.portfolio-popup .card p {
+    margin: 2px 0;
+    color: #d7d4ce;
+}
+
+/* Стили полосы прокрутки для всплывающего окна */
+.portfolio-popup::-webkit-scrollbar {
+    width: 8px;
+}
+
+.portfolio-popup::-webkit-scrollbar-thumb {
+    background-color: #5599ff;
+    border-radius: 6px;
+}
+
+.portfolio-popup::-webkit-scrollbar-track {
+    background-color: #222222;
 }
