@@ -383,3 +383,13 @@ footer {
     margin-bottom: 6px;
     color: #cfd6e4;
 }
+/* Располагаем два ярлыка вертикально */
+.specialist-badge + .specialist-badge {
+    margin-top: 20px; /* расстояние между ярлыками */
+}
+/* Колонка с ярлыками */
+.specialist-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* расстояние между ярлыками */
+}
