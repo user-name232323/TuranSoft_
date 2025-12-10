@@ -23,6 +23,17 @@
 <section id="about" class="container about-section">
 
     <div class="about-wrapper">
+      
+      <div id="preloader">
+    <div class="loader"></div>
+</div>
+
+<script>
+    window.addEventListener("load", function () {
+        const loader = document.getElementById("preloader");
+        loader.classList.add("loaded");
+    });
+</script>
 
     <!-- Контейнер для двух ярлыков -->
     <div class="specialist-column">
