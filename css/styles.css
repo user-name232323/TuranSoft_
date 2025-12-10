@@ -318,6 +318,61 @@ footer {
 }
 
 
+/* Секция карты */
+.map-section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 15px;
+}
+
+.map-section h2 {
+  text-align: center;
+  color: #2255ff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 20px;
+}
+
+/* Карта Leaflet */
+#map {
+  height: 400px; /* обязательно */
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 0 20px rgba(34, 85, 255, 0.4);
+}
+
+/* Футер — если нужно */
+.footer-contacts__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 0;
+}
+
+.footer-contacts__info {
+  text-align: center;
+}
+
+.footer-contacts__phone-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: #25d366;
+  text-decoration: none;
+  margin-bottom: 6px;
+}
+
+.footer-contacts__phone-link:hover {
+  text-decoration: underline;
+}
+
+.footer-contacts__icon {
+  width: 24px;
+  height: 24px;
+}
+
+
 /* ===== Специалист Ярлык с портфолио при наведении ===== */
 .specialist-badge {
     position: relative;

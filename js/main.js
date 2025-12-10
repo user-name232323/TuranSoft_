@@ -10,7 +10,6 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     });
 });
 
-
 // =============================
 // ОТПРАВКА ПИСЬМА ЧЕРЕЗ КЛИЕНТ
 // =============================
@@ -30,17 +29,29 @@ document.getElementById("contactForm").addEventListener("submit", function(event
         "Сообщение:\n" + message
     );
 
-    // mailto автоматически определяет:
-    // - Gmail (если стоит по умолчанию)
-    // - Outlook
-    // - Thunderbird
-    // - Apple Mail
-    // - Почта Windows
-    // - Mail.ru / Yandex клиент
-    // И открывает тот, что используется у пользователя.
-
     const mailtoLink = `mailto:${toEmail}?subject=${subject}&body=${body}`;
 
-    // Перенаправление на почтовый клиент
     window.location.href = mailtoLink;
+});
+
+// =====================
+// ИНИЦИАЛИЗАЦИЯ КАРТЫ LEAFLET
+// =====================
+document.addEventListener("DOMContentLoaded", function () {
+    const lat = 51.1290;
+    const lon = 71.4305;
+
+    const map = L.map("map").setView([lat, lon], 16);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+            '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map);
+
+    L.marker([lat, lon])
+        .addTo(map)
+        .bindPopup(
+            "<b>Адрес:</b><br>г. Астана, район Есиль,<br>ул. Букар Жырау, зд. 36А, кв. 90"
+        )
+        .openPopup();
 });

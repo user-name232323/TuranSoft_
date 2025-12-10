@@ -1,12 +1,31 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Turan Soft — IT услуги от Дмитрия Мищукова</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Turan Soft — IT услуги от Дмитрия Мищукова</title>
 
-    <link rel="stylesheet" href="css/styles.css" />
-    <script defer src="js/main.js"></script>
+  <!-- Твой файл стилей -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Подключаем CSS Leaflet — вот сюда -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-sA+e2rP4jFkTbA0z4Clap/vZ6lA9nEEDf5z7p2uXwPg="
+    crossorigin=""
+  />
+
+  <!-- Скрипт Leaflet -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-oIITMf2W45vPQaoxJh37zR2xILwtCgl1N24Io6tuzWc="
+    crossorigin=""
+    defer
+  ></script>
+
+  <!-- Твой JS -->
+  <script defer src="js/main.js"></script>
 </head>
 <body>
   
@@ -162,6 +181,12 @@
 
     <button type="submit">Отправить</button>
   </form>
+</section>
+
+  <!-- Карта -->
+ <section class="map-section container">
+  <h2>Наш адрес</h2>
+  <div id="map"></div>
 </section>
 
 <footer class="footer-contacts">
