@@ -356,54 +356,30 @@ footer {
 }
 
 /* Заголовок всплывающей секции */
-.portfolio-popup h2 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 22px;
-    color: #a0b1c3;
-    text-align: center;
-}
-
-/* Карточки внутри всплывашки */
-.portfolio-popup .cards {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.portfolio-popup .card {
-    background: #2f3640;
-    border: 1px solid #6c7a89;
-    padding: 12px 15px;
-    border-radius: 10px;
-    box-shadow: none;
-    color: #cfd6e4;
-    font-size: 13px;
-    line-height: 1.4;
-    transition: none;
-}
-
+/* Улучшенный стиль названий компаний внутри ярлыка */
 .portfolio-popup .card h3 {
-    font-size: 16px;
-    margin-bottom: 8px;
-    color: #8f9bb3;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding-bottom: 6px;
+
+    /* Красивый градиентный текст */
+    background: linear-gradient(90deg, #d7e3ff 0%, #9eb9ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    /* Лёгкое свечение */
+    text-shadow: 0 0 6px rgba(150, 180, 255, 0.35);
+
+    border-bottom: 1px solid rgba(160, 177, 195, 0.2); /* аккуратная линия */
 }
 
+/* Немного увеличим отступы текста */
 .portfolio-popup .card p {
-    margin: 2px 0;
-    color: #b0b9cc;
-}
-
-/* Стили полосы прокрутки для всплывающего окна */
-.portfolio-popup::-webkit-scrollbar {
-    width: 8px;
-}
-
-.portfolio-popup::-webkit-scrollbar-thumb {
-    background-color: #6c7a89;
-    border-radius: 6px;
-}
-
-.portfolio-popup::-webkit-scrollbar-track {
-    background-color: #2f3640;
+    font-size: 14px;
+    line-height: 1.55;
+    margin-bottom: 6px;
+    color: #cfd6e4;
 }
