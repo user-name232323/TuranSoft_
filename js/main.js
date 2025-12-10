@@ -99,3 +99,20 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Ошибка при инициализации карты Leaflet:", error);
     }
 });
+
+function fadeInOnScroll() {
+  const allElements = document.querySelectorAll('*');
+  const windowHeight = window.innerHeight;
+
+  allElements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < windowHeight - 50) {
+      if (!el.classList.contains('_visible')) {
+        el.classList.add('_visible');
+      }
+    }
+  });
+}
+
+window.addEventListener('scroll', fadeInOnScroll);
+window.addEventListener('load', fadeInOnScroll);
