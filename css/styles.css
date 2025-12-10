@@ -78,16 +78,6 @@ h1, h2, h3 {
   background-color: #e0e0e0;
 }
 
-/* Исходное состояние — прозрачный */
-* {
-  opacity: 0;
-  transition: opacity 0.8s ease-in-out;
-}
-
-/* При появлении — полностью видимый */
-*._visible {
-  opacity: 1 !important;
-}
 
 .service-icon {
   width: 64px;

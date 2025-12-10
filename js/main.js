@@ -100,19 +100,22 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-function fadeInOnScroll() {
-  const allElements = document.querySelectorAll('*');
-  const windowHeight = window.innerHeight;
+// =====================
+// АНИМАЦИЯ ПОЯВЛЕНИЯ ЭЛЕМЕНТОВ ПРИ ПРОКРУТКЕ
+// =====================
+document.addEventListener("DOMContentLoaded", () => {
+    const elements = document.querySelectorAll(".fade-in");
 
-  allElements.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < windowHeight - 50) {
-      if (!el.classList.contains('_visible')) {
-        el.classList.add('_visible');
-      }
-    }
-  });
-}
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.15
+    });
 
-window.addEventListener('scroll', fadeInOnScroll);
-window.addEventListener('load', fadeInOnScroll);
+    elements.forEach(el => observer.observe(el));
+});

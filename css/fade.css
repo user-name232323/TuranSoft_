@@ -1,0 +1,12 @@
+/* Элемент скрыт до появления */
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+/* Когда элемент попадает в область видимости */
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
