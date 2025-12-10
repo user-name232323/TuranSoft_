@@ -8,29 +8,25 @@
   <!-- Твой файл стилей -->
   <link rel="stylesheet" href="css/styles.css" />
 
-  <!-- Подключаем CSS Leaflet — вот сюда -->
+  <!-- Подключаем CSS Leaflet без integrity и crossorigin -->
   <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-sA+e2rP4jFkTbA0z4Clap/vZ6lA9nEEDf5z7p2uXwPg="
-    crossorigin=""
   />
 
-  <!-- Скрипт Leaflet -->
+  <!-- Скрипт Leaflet без integrity и crossorigin, с defer -->
   <script
     src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-oIITMf2W45vPQaoxJh37zR2xILwtCgl1N24Io6tuzWc="
-    crossorigin=""
     defer
   ></script>
 
-  <!-- Твой JS -->
+  <!-- Твой JS, который инициализирует карту -->
   <script defer src="js/main.js"></script>
 </head>
 <body>
   
 <header class="hero">
-    <img src="img/turansoftimg.png" alt="Логотип Turan Soft" class="logo">
+    <img src="img/turansoftimg.png" alt="Логотип Turan Soft" class="logo" />
 
     <h1 class="title">TURAN SOFT</h1>
     <p class="subtitle">IT услуги</p>
@@ -44,18 +40,18 @@
     <div class="about-wrapper">
       
       <div id="preloader">
-    <div class="loader"></div>
-</div>
+        <div class="loader"></div>
+      </div>
 
-<script>
-    window.addEventListener("load", function () {
-        const loader = document.getElementById("preloader");
-        loader.classList.add("loaded");
-    });
-</script>
+      <script>
+        window.addEventListener("load", function () {
+            const loader = document.getElementById("preloader");
+            if(loader) loader.classList.add("loaded");
+        });
+      </script>
 
-    <!-- Контейнер для двух ярлыков -->
-    <div class="specialist-column">
+      <!-- Контейнер для двух ярлыков -->
+      <div class="specialist-column">
 
         <!-- Первый ярлык -->
         <div class="specialist-badge">
@@ -114,13 +110,13 @@
             </div>
         </div>
 
-    </div>
+      </div>
 
       <!-- Текст секции "О компании" справа -->
       <div class="about-text">
         <h2>О компании</h2>
         <p>
-            <span class="highlight">Turan Soft</span> — частная IT-компания, основанная Генеральным директором <strong>Шарханом Сайлаубаевым</strong>.<br>
+            <span class="highlight">Turan Soft</span> — частная IT-компания, основанная Генеральным директором <strong>Шарханом Сайлаубаевым</strong>.<br />
             Мы предоставляем профессиональные услуги разработки и инфраструктуры, помогая бизнесу эффективно использовать цифровые технологии.
         </p>
       </div>
@@ -186,7 +182,7 @@
   <!-- Карта -->
  <section class="map-section container">
   <h2>Наш адрес</h2>
-  <div id="map"></div>
+  <div id="map" style="height: 400px; border-radius: 14px;"></div>
 </section>
 
 <footer class="footer-contacts">
