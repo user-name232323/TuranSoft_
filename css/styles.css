@@ -30,6 +30,18 @@ h1, h2, h3 {
     text-align: center;
 }
 
+/* Заголовок карты */
+.map-section h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff !important; /* белый цвет */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); /* тень для контраста, можно настроить */
+    text-align: center;
+}
+
 /* Заголовки секций */
 .about-section h2,
 .portfolio-section h2,
