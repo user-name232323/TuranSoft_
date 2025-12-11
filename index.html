@@ -28,54 +28,59 @@
   <style>
     /* Обертка для всей секции */
     .about-wrapper {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 40px;
-        max-width: 1400px;
+        max-width: 1200px;
         margin: 0 auto;
-        padding: 0 40px;
-        position: relative;
-    }
-    
-    /* Анимация правее (отдельный блок справа) */
-    .tech-animation-right {
-        position: absolute;
-        right: -180px; /* Выдвигаем еще правее */
-        top: 50%;
-        transform: translateY(-50%);
-        width: 400px;
-        height: 400px;
-        background: linear-gradient(135deg, #0a0a0a 0%, #151515 100%);
-        border-radius: 20px;
-        border: 2px solid #2255ff;
-        overflow: hidden;
-        box-shadow: 0 15px 40px rgba(34, 85, 255, 0.3);
-        z-index: 10;
+        padding: 0 20px;
     }
     
     /* Контейнер для основного контента */
     .about-content {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
+        justify-content: space-between;
         gap: 60px;
         width: 100%;
-        max-width: 1200px;
         margin: 0 auto;
-        position: relative;
     }
     
-    /* Специалисты - левая часть */
-    .specialist-column {
-        flex: 0 0 auto;
-        min-width: 280px;
-    }
-    
-    /* Текст компании - центральная часть */
+    /* Текст компании - левая часть */
     .about-text {
         flex: 1;
         min-width: 300px;
-        max-width: 500px;
+        max-width: 600px;
+    }
+    
+    /* IT Анимация - правая часть */
+    .tech-animation {
+        flex: 0 0 350px;
+        height: 350px;
+        background: linear-gradient(135deg, #0a0a0a 0%, #151515 100%);
+        border-radius: 20px;
+        border: 2px solid #2255ff;
+        overflow: hidden;
+        box-shadow: 0 15px 40px rgba(34, 85, 255, 0.3);
+        position: relative;
+    }
+    
+    .about-section {
+        padding: 80px 0;
+    }
+
+    .about-section h2 {
+        margin-bottom: 30px;
+        font-size: 32px;
+        color: #d7cfc1;
+    }
+
+    .about-text p {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #b0b0b0;
+    }
+
+    .highlight {
+        color: #88bbff;
+        font-weight: 600;
     }
     
     /* Стили для эффекта печатающегося текста в бейджиках */
@@ -251,8 +256,8 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
         background: radial-gradient(circle at 30% 30%, #2255ff, #0a0a0a);
         border-radius: 50%;
         box-shadow: 
@@ -323,21 +328,21 @@
     }
     
     /* Адаптивность */
-    @media (max-width: 1400px) {
-        .tech-animation-right {
-            position: relative;
-            right: 0;
-            top: 0;
-            transform: none;
-            margin: 40px auto 0;
-            width: 350px;
-            height: 350px;
-        }
-        
+    @media (max-width: 1024px) {
         .about-content {
             flex-direction: column;
             align-items: center;
-            gap: 40px;
+            gap: 50px;
+        }
+        
+        .about-text {
+            text-align: center;
+            max-width: 800px;
+        }
+        
+        .tech-animation {
+            width: 320px;
+            height: 320px;
         }
         
         .specialist-column {
@@ -348,21 +353,33 @@
             justify-content: center;
             gap: 20px;
         }
-        
-        .about-text {
-            text-align: center;
-            max-width: 700px;
-        }
     }
     
     @media (max-width: 768px) {
-        .tech-animation-right {
+        .about-section {
+            padding: 60px 0;
+        }
+        
+        .about-content {
+            gap: 40px;
+        }
+        
+        .about-text h2 {
+            font-size: 28px;
+        }
+        
+        .about-text p {
+            font-size: 16px;
+        }
+        
+        .tech-animation {
             width: 300px;
             height: 300px;
         }
         
-        .about-wrapper {
-            padding: 0 20px;
+        .tech-globe {
+            width: 100px;
+            height: 100px;
         }
         
         .specialist-badge {
@@ -375,12 +392,63 @@
     }
     
     @media (max-width: 600px) {
+        .about-wrapper {
+            padding: 0 15px;
+        }
+        
+        .about-text h2 {
+            font-size: 24px;
+        }
+        
+        .about-text p {
+            font-size: 15px;
+        }
+        
+        .tech-animation {
+            width: 280px;
+            height: 280px;
+        }
+        
+        .tech-globe {
+            width: 90px;
+            height: 90px;
+        }
+        
+        .tech-element {
+            width: 35px;
+            height: 35px;
+            font-size: 18px;
+        }
+        
         .specialist-badge {
             width: 280px;
         }
         
         .specialists-container {
             width: 100%;
+            padding: 0 10px;
+        }
+    }
+    
+    @media (max-width: 400px) {
+        .tech-animation {
+            width: 250px;
+            height: 250px;
+        }
+        
+        .tech-globe {
+            width: 80px;
+            height: 80px;
+        }
+        
+        .tech-element {
+            width: 30px;
+            height: 30px;
+            font-size: 16px;
+        }
+        
+        .code-line {
+            width: 80px;
         }
     }
   </style>
@@ -410,22 +478,23 @@
         });
       </script>
 
-      <!-- Основной контент: только текст -->
+      <!-- Основной контент -->
       <div class="about-content">
         
-<!-- Текст секции "О компании" (ЦЕНТРАЛЬНАЯ ЧАСТЬ) -->
-<div class="about-text">
-    <h2>О компании</h2>
-    <p>
-        <span class="highlight">ТОО «Туран софт»</span> — это казахстанская IT-компания, которая создает и внедряет передовые программные решения. Мы входим в международную группу компаний, представленную в Европе, Турции и на Ближнем Востоке. Наш опыт работы с крупными корпоративными клиентами в Казахстане и за его пределами позволяет нам предлагать продукты и услуги, соответствующие высшим международным стандартам. Мы предоставляем профессиональные услуги разработки и инфраструктуры, помогая бизнесу эффективно использовать цифровые технологии.
-    </p>
-</div>
+        <!-- Текст секции "О компании" -->
+        <div class="about-text">
+            <h2>О компании</h2>
+            <p>
+                <span class="highlight">ТОО «Туран софт»</span> — это казахстанская IT-компания, которая создает и внедряет передовые программные решения. Мы входим в международную группу компаний, представленную в Европе, Турции и на Ближнем Востоке. Наш опыт работы с крупными корпоративными клиентами в Казахстане и за его пределами позволяет нам предлагать продукты и услуги, соответствующие высшим международным стандартам. Мы предоставляем профессиональные услуги разработки и инфраструктуры, помогая бизнесу эффективно использовать цифровые технологии.
+            </p>
+        </div>
       
-      <!-- IT Анимация СРАВО за пределами основного контента -->
-      <div class="tech-animation-right" id="techAnimation">
-        <!-- Анимированные элементы будут созданы через JS -->
-      </div>
+        <!-- IT Анимация -->
+        <div class="tech-animation" id="techAnimation">
+          <!-- Анимированные элементы будут созданы через JS -->
+        </div>
 
+      </div>
     </div>
 </section>
 
@@ -594,40 +663,49 @@
         globe.className = 'tech-globe';
         animationContainer.appendChild(globe);
         
+        // Оптимизация для мобильных
+        const isMobile = window.innerWidth <= 768;
+        const elementCount = isMobile ? 6 : 8;
+        const lineCount = isMobile ? 10 : 15;
+        const pointCount = isMobile ? 4 : 6;
+        
         // Создаем плавающие элементы технологий
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < elementCount; i++) {
           setTimeout(() => {
             const element = document.createElement('div');
             element.className = 'tech-element';
-            element.textContent = techIcons[i];
+            element.textContent = techIcons[i % techIcons.length];
             element.style.left = Math.random() * 80 + 10 + '%';
             element.style.top = Math.random() * 80 + 10 + '%';
-            element.style.animation = `floatElement ${3 + Math.random() * 4}s infinite ${i * 0.5}s`;
+            const duration = isMobile ? (4 + Math.random() * 5) : (3 + Math.random() * 4);
+            element.style.animation = `floatElement ${duration}s infinite ${i * 0.5}s`;
             animationContainer.appendChild(element);
           }, i * 300);
         }
         
         // Создаем линии кода
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < lineCount; i++) {
           setTimeout(() => {
             const line = document.createElement('div');
             line.className = 'code-line';
             line.style.top = Math.random() * 100 + '%';
             line.style.left = '-100px';
-            line.style.animation = `codeFlow ${2 + Math.random() * 3}s infinite ${i * 0.3}s`;
+            const duration = isMobile ? (3 + Math.random() * 4) : (2 + Math.random() * 3);
+            line.style.animation = `codeFlow ${duration}s infinite ${i * 0.3}s`;
             line.style.transform = 'rotate(45deg)';
             animationContainer.appendChild(line);
           }, i * 200);
         }
         
         // Создаем пульсирующие точки данных
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < pointCount; i++) {
           setTimeout(() => {
             const point = document.createElement('div');
             point.className = 'data-point';
             point.style.left = Math.random() * 80 + 10 + '%';
             point.style.top = Math.random() * 80 + 10 + '%';
-            point.style.animation = `pulseData ${2 + Math.random() * 2}s infinite ${i * 0.4}s`;
+            const duration = isMobile ? (3 + Math.random() * 3) : (2 + Math.random() * 2);
+            point.style.animation = `pulseData ${duration}s infinite ${i * 0.4}s`;
             animationContainer.appendChild(point);
           }, i * 350);
         }
