@@ -192,6 +192,33 @@
         100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
     }
     
+    /* Секция специалистов после услуг */
+    .specialists-section {
+        max-width: 900px;
+        margin: 80px auto;
+        padding: 0 20px;
+        text-align: center;
+    }
+    
+    .specialists-section h2 {
+        font-size: 36px;
+        font-weight: 700;
+        color: #d7cfc1;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 40px;
+        text-shadow: 0 2px 6px rgba(34, 85, 255, 0.4);
+    }
+    
+    .specialists-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
     /* Анимированные линии кода */
     .code-line {
         position: absolute;
@@ -341,6 +368,20 @@
         .specialist-badge {
             width: 250px;
         }
+        
+        .specialists-container {
+            gap: 20px;
+        }
+    }
+    
+    @media (max-width: 600px) {
+        .specialist-badge {
+            width: 280px;
+        }
+        
+        .specialists-container {
+            width: 100%;
+        }
     }
   </style>
 </head>
@@ -369,48 +410,16 @@
         });
       </script>
 
-      <!-- Основной контент: бейджики + текст -->
+      <!-- Основной контент: только текст -->
       <div class="about-content">
         
-        <!-- Контейнер для двух ярлыков (ЛЕВАЯ ЧАСТЬ) -->
-        <div class="specialist-column">
-
-          <!-- Первый ярлык -->
-          <div class="specialist-badge">
-              <div class="badge-highlight"></div>
-              <div class="badge-content">
-                  <img src="img/image7.png" alt="Фото Дмитрия Мищукова" class="specialist-photo" />
-                  <div class="specialist-name">Дмитрий Мищуков</div>
-              </div>
-              <div class="specialist-role">
-                  <span class="typing-text" data-text="Инженер программист"></span>
-              </div>
-          </div>
-
-          <!-- Второй ярлык -->
-          <div class="specialist-badge">
-              <div class="badge-highlight"></div>
-              <div class="badge-content">
-                  <img src="img/image6.png" alt="Фото Кузьменкова Кирилла" class="specialist-photo" />
-                  <div class="specialist-name">Кузьменков Кирилл</div>
-              </div>
-              <div class="specialist-role">
-                  <span class="typing-text" data-text="Менеджер проектов"></span>
-              </div>
-          </div>
-
-        </div>
-
-        <!-- Текст секции "О компании" (ЦЕНТРАЛЬНАЯ ЧАСТЬ) -->
-        <div class="about-text">
-          <h2>О компании</h2>
-          <p>
-              <span class="highlight">Turan Soft</span> — частная IT-компания, основанная Генеральным директором <strong>Шарханом Сайлаубаевым</strong>.<br />
-              Мы предоставляем профессиональные услуги разработки и инфраструктуры, помогая бизнесу эффективно использовать цифровые технологии.
-          </p>
-        </div>
-        
-      </div>
+<!-- Текст секции "О компании" (ЦЕНТРАЛЬНАЯ ЧАСТЬ) -->
+<div class="about-text">
+    <h2>О компании</h2>
+    <p>
+        <span class="highlight">ТОО «Туран софт»</span> — это казахстанская IT-компания, которая создает и внедряет передовые программные решения. Мы входим в международную группу компаний, представленную в Европе, Турции и на Ближнем Востоке. Наш опыт работы с крупными корпоративными клиентами в Казахстане и за его пределами позволяет нам предлагать продукты и услуги, соответствующие высшим международным стандартам. Мы предоставляем профессиональные услуги разработки и инфраструктуры, помогая бизнесу эффективно использовать цифровые технологии.
+    </p>
+</div>
       
       <!-- IT Анимация СРАВО за пределами основного контента -->
       <div class="tech-animation-right" id="techAnimation">
@@ -463,6 +472,40 @@
 
   </div>
 </section>
+
+<!-- НОВАЯ СЕКЦИЯ: Специалисты после услуг -->
+<section id="specialists" class="specialists-section fade-in">
+  <h2>Наша команда</h2>
+  
+  <div class="specialists-container">
+    
+    <!-- Первый бейджик -->
+    <div class="specialist-badge">
+        <div class="badge-highlight"></div>
+        <div class="badge-content">
+            <img src="img/image7.png" alt="Фото Дмитрия Мищукова" class="specialist-photo" />
+            <div class="specialist-name">Дмитрий Мищуков</div>
+        </div>
+        <div class="specialist-role">
+            <span class="typing-text" data-text="Инженер программист"></span>
+        </div>
+    </div>
+
+    <!-- Второй бейджик -->
+    <div class="specialist-badge">
+        <div class="badge-highlight"></div>
+        <div class="badge-content">
+            <img src="img/image6.png" alt="Фото Кузьменкова Кирилла" class="specialist-photo" />
+            <div class="specialist-name">Кузьменков Кирилл</div>
+        </div>
+        <div class="specialist-role">
+            <span class="typing-text" data-text="Менеджер проектов"></span>
+        </div>
+    </div>
+    
+  </div>
+</section>
+
 </main>
 
 <section id="contact" class="container contact-section fade-in">

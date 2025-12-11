@@ -491,6 +491,51 @@ h1, h2, h3 {
 .specialist-badge:hover .specialist-photo {
     border-color: #a0b1c3;
 }
+.about-text p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #e8e6e1;
+    font-weight: 400;
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: justify;
+    position: relative;
+    padding-left: 20px;
+    border-left: 3px solid rgba(85, 153, 255, 0.3);
+    text-align: justify !important;
+    text-justify: inter-word;
+}
+
+.about-text .highlight {
+    color: #5599ff;
+    font-weight: 700;
+    font-size: 20px;
+    background: linear-gradient(90deg, #5599ff 0%, #88bbff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.5px;
+}
+
+.about-text p strong {
+    color: #2255ff;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(34, 85, 255, 0.3);
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+    .about-text p {
+        font-size: 16px;
+        line-height: 1.6;
+        padding-left: 15px;
+        text-align: left;
+    }
+    
+    .about-text .highlight {
+        font-size: 18px;
+    }
+}
 
 /* Имя специалиста */
 .specialist-name {
