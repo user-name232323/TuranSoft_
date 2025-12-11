@@ -60,46 +60,6 @@ if (contactForm) {
 } else {
     console.warn("Форма контактов с id 'contactForm' не найдена на странице.");
 }
-
-// =====================
-// ИНИЦИАЛИЗАЦИЯ КАРТЫ LEAFLET
-// =====================
-document.addEventListener("DOMContentLoaded", function () {
-    const mapContainer = document.getElementById("map");
-
-    if (!mapContainer) {
-        console.warn("Контейнер карты с id 'map' не найден.");
-        return;
-    }
-
-    // Проверяем, подключена ли библиотека Leaflet
-    if (typeof L === "undefined") {
-        console.error("Leaflet не загружен. Проверьте подключение скриптов Leaflet.");
-        return;
-    }
-
-    const lat = 51.1290;
-    const lon = 71.4305;
-
-    try {
-        const map = L.map("map").setView([lat, lon], 16);
-
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-            attribution:
-                '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        }).addTo(map);
-
-        L.marker([lat, lon])
-            .addTo(map)
-            .bindPopup(
-                "<b>Адрес:</b><br>г. Астана, район Есиль,<br>ул. Букар Жырау, зд. 36А, кв. 90"
-            )
-            .openPopup();
-    } catch (error) {
-        console.error("Ошибка при инициализации карты Leaflet:", error);
-    }
-});
-
 // =====================
 // АНИМАЦИЯ ПОЯВЛЕНИЯ ЭЛЕМЕНТОВ ПРИ ПРОКРУТКЕ
 // =====================
