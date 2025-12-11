@@ -19,6 +19,9 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 // =============================
 // ОТПРАВКА ПИСЬМА ЧЕРЕЗ КЛИЕНТ
 // =============================
+// =============================
+// ОТПРАВКА ПИСЬМА ЧЕРЕЗ КЛИЕНТ
+// =============================
 const contactForm = document.getElementById("contactForm");
 
 if (contactForm) {
@@ -26,30 +29,27 @@ if (contactForm) {
         event.preventDefault();
 
         const nameInput = document.getElementById("name");
-        const emailInput = document.getElementById("email");
         const messageInput = document.getElementById("message");
 
-        if (!nameInput || !emailInput || !messageInput) {
-            console.error("Форма: не найдены обязательные поля name, email или message.");
+        if (!nameInput || !messageInput) {
+            console.error("Форма: не найдены обязательные поля name или message.");
             alert("Ошибка: форма некорректна. Попробуйте обновить страницу.");
             return;
         }
 
         const name = nameInput.value.trim();
-        const email = emailInput.value.trim();
         const message = messageInput.value.trim();
 
-        if (!name || !email || !message) {
+        if (!name || !message) {
             alert("Пожалуйста, заполните все поля формы.");
             return;
         }
 
-        const toEmail = "info@turan-soft.com";
+        const toEmail = "dimacri558@gmail.com";
 
         const subject = encodeURIComponent("Сообщение с сайта от " + name);
         const body = encodeURIComponent(
             "Имя: " + name + "\n" +
-            "Email отправителя: " + email + "\n\n" +
             "Сообщение:\n" + message
         );
 
