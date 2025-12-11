@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/fade.css">
 
-
   <!-- Подключаем CSS Leaflet без integrity и crossorigin -->
   <link
     rel="stylesheet"
@@ -24,6 +23,326 @@
 
   <!-- Твой JS, который инициализирует карту -->
   <script defer src="js/main.js"></script>
+
+  <!-- Стили для IT анимации и эффекта печати -->
+  <style>
+    /* Обертка для всей секции */
+    .about-wrapper {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 40px;
+        position: relative;
+    }
+    
+    /* Анимация правее (отдельный блок справа) */
+    .tech-animation-right {
+        position: absolute;
+        right: -180px; /* Выдвигаем еще правее */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 400px;
+        height: 400px;
+        background: linear-gradient(135deg, #0a0a0a 0%, #151515 100%);
+        border-radius: 20px;
+        border: 2px solid #2255ff;
+        overflow: hidden;
+        box-shadow: 0 15px 40px rgba(34, 85, 255, 0.3);
+        z-index: 10;
+    }
+    
+    /* Контейнер для основного контента */
+    .about-content {
+        display: flex;
+        align-items: flex-start;
+        gap: 60px;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+    }
+    
+    /* Специалисты - левая часть */
+    .specialist-column {
+        flex: 0 0 auto;
+        min-width: 280px;
+    }
+    
+    /* Текст компании - центральная часть */
+    .about-text {
+        flex: 1;
+        min-width: 300px;
+        max-width: 500px;
+    }
+    
+    /* Стили для эффекта печатающегося текста в бейджиках */
+    .specialist-role {
+        font-size: 14px;
+        color: #88bbff;
+        font-weight: 600;
+        margin-top: 5px;
+        height: 20px;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .typing-text {
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 2px solid #88bbff; /* Курсор */
+        animation: typing 3.5s steps(30, end) infinite,
+                   blink-caret 0.75s step-end infinite;
+    }
+    
+    /* Анимация печати */
+    @keyframes typing {
+        0% { width: 0 }
+        30% { width: 100% }
+        70% { width: 100% }
+        90% { width: 0 }
+        100% { width: 0 }
+    }
+    
+    /* Анимация мигающего курсора */
+    @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: #88bbff }
+    }
+    
+    /* Улучшенные стили для бейджиков */
+    .specialist-badge {
+        position: relative;
+        background: #2f3542;
+        border: 2px solid #6c7a89;
+        border-radius: 16px;
+        padding: 15px 20px;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        box-shadow: 0 6px 20px rgba(108, 122, 137, 0.4);
+        width: 280px;
+        user-select: none;
+        transition: all 0.3s ease;
+        overflow: hidden;
+    }
+    
+    .specialist-badge:hover {
+        background-color: #3c4758;
+        border-color: #a0b1c3;
+        box-shadow: 0 10px 30px rgba(160, 177, 195, 0.6);
+        transform: translateY(-5px);
+    }
+    
+    .badge-content {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+    
+    .specialist-photo {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #6c7a89;
+        margin-right: 15px;
+        transition: border-color 0.3s ease;
+    }
+    
+    .specialist-badge:hover .specialist-photo {
+        border-color: #a0b1c3;
+    }
+    
+    .specialist-name {
+        color: #a0b1c3;
+        font-weight: 600;
+        font-size: 18px;
+        white-space: nowrap;
+        transition: color 0.3s ease;
+    }
+    
+    .specialist-badge:hover .specialist-name {
+        color: #d0d8e8;
+    }
+    
+    /* Эффект мигания для акцента */
+    .badge-highlight {
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+            45deg,
+            transparent 30%,
+            rgba(85, 153, 255, 0.1) 50%,
+            transparent 70%
+        );
+        transform: rotate(45deg);
+        animation: shine 3s infinite linear;
+        pointer-events: none;
+    }
+    
+    @keyframes shine {
+        0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+    
+    /* Анимированные линии кода */
+    .code-line {
+        position: absolute;
+        background: linear-gradient(90deg, transparent, #2255ff, transparent);
+        height: 2px;
+        width: 100px;
+        opacity: 0;
+        filter: blur(1px);
+    }
+    
+    /* Плавающие элементы технологии */
+    .tech-element {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background: rgba(34, 85, 255, 0.1);
+        border: 1px solid rgba(34, 85, 255, 0.3);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: #5599ff;
+        opacity: 0;
+    }
+    
+    /* Центральный глобус/планета */
+    .tech-globe {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 150px;
+        height: 150px;
+        background: radial-gradient(circle at 30% 30%, #2255ff, #0a0a0a);
+        border-radius: 50%;
+        box-shadow: 
+            inset 0 0 50px rgba(34, 85, 255, 0.5),
+            0 0 60px rgba(34, 85, 255, 0.3);
+        animation: rotateGlobe 20s linear infinite;
+    }
+    
+    .tech-globe::before {
+        content: '';
+        position: absolute;
+        top: 15%;
+        left: 25%;
+        width: 30px;
+        height: 15px;
+        background: rgba(85, 153, 255, 0.6);
+        border-radius: 50%;
+        filter: blur(5px);
+    }
+    
+    .tech-globe::after {
+        content: '';
+        position: absolute;
+        bottom: 20%;
+        right: 20%;
+        width: 20px;
+        height: 10px;
+        background: rgba(85, 153, 255, 0.4);
+        border-radius: 50%;
+        filter: blur(4px);
+    }
+    
+    /* Пульсирующие точки данных */
+    .data-point {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: #25D366;
+        border-radius: 50%;
+        box-shadow: 0 0 15px #25D366;
+        opacity: 0;
+    }
+    
+    /* Анимации */
+    @keyframes rotateGlobe {
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    
+    @keyframes floatElement {
+        0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+    }
+    
+    @keyframes pulseData {
+        0% { transform: scale(0.5); opacity: 0; }
+        50% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(0.5); opacity: 0; }
+    }
+    
+    @keyframes codeFlow {
+        0% { transform: translateX(-100px) rotate(45deg); opacity: 0; }
+        10% { opacity: 0.7; }
+        90% { opacity: 0.7; }
+        100% { transform: translateX(400px) rotate(45deg); opacity: 0; }
+    }
+    
+    /* Адаптивность */
+    @media (max-width: 1400px) {
+        .tech-animation-right {
+            position: relative;
+            right: 0;
+            top: 0;
+            transform: none;
+            margin: 40px auto 0;
+            width: 350px;
+            height: 350px;
+        }
+        
+        .about-content {
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .specialist-column {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .about-text {
+            text-align: center;
+            max-width: 700px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .tech-animation-right {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .about-wrapper {
+            padding: 0 20px;
+        }
+        
+        .specialist-badge {
+            width: 250px;
+        }
+    }
+  </style>
 </head>
 <body>
   
@@ -36,8 +355,7 @@
 
 <main>
 
-<section id="about" class="container about-section fade-in">
-
+<section id="about" class="about-section fade-in">
     <div class="about-wrapper">
       
       <div id="preloader">
@@ -51,39 +369,54 @@
         });
       </script>
 
-      <!-- Контейнер для двух ярлыков -->
-      <div class="specialist-column">
+      <!-- Основной контент: бейджики + текст -->
+      <div class="about-content">
+        
+        <!-- Контейнер для двух ярлыков (ЛЕВАЯ ЧАСТЬ) -->
+        <div class="specialist-column">
 
-        <!-- Первый ярлык -->
-        <div class="specialist-badge">
-            <img src="img/image7.png" alt="Фото Дмитрия Мищукова" class="specialist-photo" />
-            <div class="specialist-name">Дмитрий Мищуков</div>
+          <!-- Первый ярлык -->
+          <div class="specialist-badge">
+              <div class="badge-highlight"></div>
+              <div class="badge-content">
+                  <img src="img/image7.png" alt="Фото Дмитрия Мищукова" class="specialist-photo" />
+                  <div class="specialist-name">Дмитрий Мищуков</div>
+              </div>
+              <div class="specialist-role">
+                  <span class="typing-text" data-text="Инженер программист"></span>
+              </div>
+          </div>
 
-            <div class="portfolio-popup">
-                <h2>Инженер программист</h2>
-            </div>
+          <!-- Второй ярлык -->
+          <div class="specialist-badge">
+              <div class="badge-highlight"></div>
+              <div class="badge-content">
+                  <img src="img/image6.png" alt="Фото Кузьменкова Кирилла" class="specialist-photo" />
+                  <div class="specialist-name">Кузьменков Кирилл</div>
+              </div>
+              <div class="specialist-role">
+                  <span class="typing-text" data-text="Менеджер проектов"></span>
+              </div>
+          </div>
+
         </div>
 
-        <!-- Второй ярлык -->
-        <div class="specialist-badge">
-            <img src="img/image6.png" alt="Фото Кузьменкова Кирилла" class="specialist-photo" />
-            <div class="specialist-name">Кузьменков Кирилл</div>
-
-            <div class="portfolio-popup">
-                <h2>Менеджер</h2>
-            </div>
+        <!-- Текст секции "О компании" (ЦЕНТРАЛЬНАЯ ЧАСТЬ) -->
+        <div class="about-text">
+          <h2>О компании</h2>
+          <p>
+              <span class="highlight">Turan Soft</span> — частная IT-компания, основанная Генеральным директором <strong>Шарханом Сайлаубаевым</strong>.<br />
+              Мы предоставляем профессиональные услуги разработки и инфраструктуры, помогая бизнесу эффективно использовать цифровые технологии.
+          </p>
         </div>
-
+        
+      </div>
+      
+      <!-- IT Анимация СРАВО за пределами основного контента -->
+      <div class="tech-animation-right" id="techAnimation">
+        <!-- Анимированные элементы будут созданы через JS -->
       </div>
 
-      <!-- Текст секции "О компании" справа -->
-      <div class="about-text">
-        <h2>О компании</h2>
-        <p>
-            <span class="highlight">Turan Soft</span> — частная IT-компания, основанная Генеральным директором <strong>Шарханом Сайлаубаевым</strong>.<br />
-            Мы предоставляем профессиональные услуги разработки и инфраструктуры, помогая бизнесу эффективно использовать цифровые технологии.
-        </p>
-      </div>
     </div>
 </section>
 
@@ -161,7 +494,7 @@
       <h3 class="footer-contacts__title">Контакты</h3>
       <a href="https://wa.me/77055501151?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D1%8F%20%D0%BF%D0%B8%D1%88%D1%83%20%D0%B2%D0%B0%D0%BC%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0.%20%D0%A5%D0%BE%D1%82%D0%B5%D0%BB%20%D0%B1%D1%8B%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%20%D1%83%D1%81%D0%BB%D1%83%D0%B3%20%D0%B8%20%D1%82%D0%B4." target="_blank" rel="noopener" class="footer-contacts__phone-link" style="display: flex; align-items: center; gap: 8px;">
         <svg class="footer-contacts__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#25D366" width="24" height="24" aria-hidden="true">
-          <path d="M20.52 3.48a11.82 11.82 0 0 0-16.7 0c-4.61 4.6-4.61 12.07 0 16.67a11.77 11.77 0 0 0 7.34 3.4v-3.39a8.95 8.95 0 0 1-5.77-2.4 7.52 7.52 0 0 1-2.12-5.27c.02-2.74 1.62-5.32 4.1-6.52a6.65 6.65 0 0 1 8.28 1.35 6.4 6.4 0 0 1 1.36 3.27 6.6 6.6 0 0 1-1.31 4.38 7.56 7.56 0 0 1-4.33 3.13c-.26.07-.53.1-.8.11-.41 0-.81-.06-1.19-.2-.6-.2-1.15-.59-1.56-1.14l-1.45 1.45a.38.38 0 0 1-.54 0L5 18.36a.39.39 0 0 1 0-.54l1.45-1.44a3.05 3.05 0 0 1-1.15-1.56c-.14-.38-.2-.79-.2-1.19 0-.27.04-.54.11-.8a7.52 7.52 0 0 1 3.13-4.33 6.67 6.67 0 0 1 4.38-1.31c1.16 0 2.27.4 3.22 1.15a6.64 6.64 0 0 1 1.35 1.32 7.16 7.16 0 0 1 1.34 3.02c.05.26.07.52.07.79z"/>
+          <path d="M20.52 3.48a11.82 11.82 0 0 0-16.7 0c-4.61 4.6-4.61 12.07 0 16.67a11.77 11.77 0 0 0 7.34 3.4v-3.39a8.95 8.95 0 0 1-5.77-2.4a7.52 7.52 0 0 1-2.12-5.27c.02-2.74 1.62-5.32 4.1-6.52a6.65 6.65 0 0 1 8.28 1.35a6.4 6.4 0 0 1 1.36 3.27a6.6 6.6 0 0 1-1.31 4.38a7.56 7.56 0 0 1-4.33 3.13c-.26.07-.53.1-.8.11-.41 0-.81-.06-1.19-.2-.6-.2-1.15-.59-1.56-1.14l-1.45 1.45a.38.38 0 0 1-.54 0L5 18.36a.39.39 0 0 1 0-.54l1.45-1.44a3.05 3.05 0 0 1-1.15-1.56c-.14-.38-.2-.79-.2-1.19 0-.27.04-.54.11-.8a7.52 7.52 0 0 1 3.13-4.33a6.67 6.67 0 0 1 4.38-1.31c1.16 0 2.27.4 3.22 1.15a6.64 6.64 0 0 1 1.35 1.32a7.16 7.16 0 0 1 1.34 3.02c.05.26.07.52.07.79z"/>
         </svg>
         +7 705 550 1151
       </a>
@@ -178,6 +511,105 @@
     © 2025 Turan Soft. Все права защищены.
   </p>
 </footer>
+
+<!-- Скрипт для IT анимации и эффекта печати -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // IT анимация
+    const animationContainer = document.getElementById('techAnimation');
+    if (animationContainer) {
+        // Иконки технологий
+        const techIcons = ['{ }', '< / >', '()', '[]', '=>', 'SQL', 'API', 'DB'];
+        
+        // Создаем глобус в центре
+        const globe = document.createElement('div');
+        globe.className = 'tech-globe';
+        animationContainer.appendChild(globe);
+        
+        // Создаем плавающие элементы технологий
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            const element = document.createElement('div');
+            element.className = 'tech-element';
+            element.textContent = techIcons[i];
+            element.style.left = Math.random() * 80 + 10 + '%';
+            element.style.top = Math.random() * 80 + 10 + '%';
+            element.style.animation = `floatElement ${3 + Math.random() * 4}s infinite ${i * 0.5}s`;
+            animationContainer.appendChild(element);
+          }, i * 300);
+        }
+        
+        // Создаем линии кода
+        for (let i = 0; i < 15; i++) {
+          setTimeout(() => {
+            const line = document.createElement('div');
+            line.className = 'code-line';
+            line.style.top = Math.random() * 100 + '%';
+            line.style.left = '-100px';
+            line.style.animation = `codeFlow ${2 + Math.random() * 3}s infinite ${i * 0.3}s`;
+            line.style.transform = 'rotate(45deg)';
+            animationContainer.appendChild(line);
+          }, i * 200);
+        }
+        
+        // Создаем пульсирующие точки данных
+        for (let i = 0; i < 6; i++) {
+          setTimeout(() => {
+            const point = document.createElement('div');
+            point.className = 'data-point';
+            point.style.left = Math.random() * 80 + 10 + '%';
+            point.style.top = Math.random() * 80 + 10 + '%';
+            point.style.animation = `pulseData ${2 + Math.random() * 2}s infinite ${i * 0.4}s`;
+            animationContainer.appendChild(point);
+          }, i * 350);
+        }
+    }
+    
+    // Эффект печатающегося текста для бейджиков
+    const typingElements = document.querySelectorAll('.typing-text');
+    
+    typingElements.forEach((element, index) => {
+        const text = element.getAttribute('data-text');
+        element.textContent = ''; // Очищаем текст
+        element.style.width = '0'; // Начинаем с нулевой ширины
+        
+        // Устанавливаем разную задержку для каждого бейджика
+        setTimeout(() => {
+            element.style.animationDelay = '0s';
+            // Устанавливаем максимальную ширину для правильной анимации
+            const tempSpan = document.createElement('span');
+            tempSpan.style.visibility = 'hidden';
+            tempSpan.style.position = 'absolute';
+            tempSpan.style.whiteSpace = 'nowrap';
+            tempSpan.textContent = text;
+            document.body.appendChild(tempSpan);
+            const textWidth = tempSpan.offsetWidth;
+            document.body.removeChild(tempSpan);
+            
+            // Устанавливаем ширину для анимации
+            element.style.maxWidth = textWidth + 'px';
+            
+            // Заполняем текст (для SEO и доступности)
+            element.textContent = text;
+        }, index * 1000); // Задержка между началом анимации каждого бейджика
+    });
+    
+    // Добавляем эффект мигания при наведении на бейджики
+    const badges = document.querySelectorAll('.specialist-badge');
+    
+    badges.forEach(badge => {
+        badge.addEventListener('mouseenter', function() {
+            const highlight = this.querySelector('.badge-highlight');
+            if (highlight) {
+                highlight.style.animation = 'shine 1s linear';
+                setTimeout(() => {
+                    highlight.style.animation = 'shine 3s infinite linear';
+                }, 1000);
+            }
+        });
+    });
+  });
+</script>
 
 </body>
 </html>
