@@ -55,29 +55,6 @@ h1, h2, h3 {
     margin-bottom: 30px;
     text-shadow: 0 2px 6px rgba(34, 85, 255, 0.4);
 }
-.presentation-container {
-  position: relative;
-  width: max-content;
-  margin: 20px auto;
-  font-weight: 700;
-  font-size: 18px;
-  color: #333;
-  cursor: pointer;
-  user-select: none;
-}
-
-.presentation-label {
-  padding: 10px 20px;
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: background-color 0.3s ease;
-}
-
-.presentation-container:hover .presentation-label {
-  background-color: #e0e0e0;
-}
-
 
 .service-icon {
   width: 64px;
@@ -92,32 +69,6 @@ h1, h2, h3 {
   width: 72px;
   height: 72px;
 }
-
-.presentation-popup {
-  position: absolute;
-  top: 110%; /* под текстом */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 500px;
-  height: 600px;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  background: white;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  display: none;
-  z-index: 9999;
-}
-
-.presentation-container:hover .presentation-popup {
-  display: block;
-}
-
-.presentation-popup iframe {
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-}
-
 
 /* Фон прелоадера */
 #preloader {
