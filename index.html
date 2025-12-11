@@ -338,11 +338,13 @@
         .about-text {
             text-align: center;
             max-width: 800px;
+            width: 100%;
         }
         
         .tech-animation {
             width: 320px;
             height: 320px;
+            flex: 0 0 auto;
         }
         
         .specialist-column {
@@ -370,6 +372,7 @@
         
         .about-text p {
             font-size: 16px;
+            line-height: 1.6;
         }
         
         .tech-animation {
@@ -420,6 +423,10 @@
             font-size: 18px;
         }
         
+        .code-line {
+            width: 80px;
+        }
+        
         .specialist-badge {
             width: 280px;
         }
@@ -431,6 +438,10 @@
     }
     
     @media (max-width: 400px) {
+        .about-wrapper {
+            padding: 0 10px;
+        }
+        
         .tech-animation {
             width: 250px;
             height: 250px;
@@ -448,7 +459,7 @@
         }
         
         .code-line {
-            width: 80px;
+            width: 70px;
         }
     }
   </style>
