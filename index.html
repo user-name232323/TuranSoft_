@@ -327,7 +327,7 @@
         100% { transform: translateX(400px) rotate(45deg); opacity: 0; }
     }
     
-    /* Адаптивность */
+    /* Адаптивность - ПРАВИЛЬНЫЙ ПОРЯДОК */
     @media (max-width: 1024px) {
         .about-content {
             flex-direction: column !important;
@@ -345,16 +345,6 @@
             width: 320px !important;
             height: 320px !important;
             flex: 0 0 auto !important;
-            order: 2 !important;
-        }
-        
-        .specialist-column {
-            width: 100%;
-            max-width: 600px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
         }
     }
     
@@ -369,19 +359,16 @@
         
         .about-text h2 {
             font-size: 28px !important;
-            text-align: center !important;
         }
         
         .about-text p {
             font-size: 16px !important;
             line-height: 1.6 !important;
-            text-align: center !important;
         }
         
         .tech-animation {
             width: 300px !important;
             height: 300px !important;
-            order: 2 !important;
             margin: 0 auto !important;
         }
         
