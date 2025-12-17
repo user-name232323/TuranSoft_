@@ -266,6 +266,26 @@ h1, h2, h3 {
 
 /* Мобильные (768px и меньше) */
 @media (max-width: 768px) {
+
+        #services {
+        /* Убираем все эффекты */
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    #services .fade-in {
+        /* Сразу видимые */
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+    }
+    
+    #services .card {
+        /* Карточки без анимации */
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
     .about-section {
         padding: 60px 0 !important;
     }
