@@ -515,6 +515,52 @@
 
 <section id="services" class="container services-section fade-in">
 
+  <!-- ДОБАВЛЯЕМ ФИКС ДЛЯ МОБИЛЬНЫХ ПРЯМО В СЕКЦИЮ -->
+  <style>
+    /* ОТКЛЮЧАЕМ АНИМАЦИЮ НА МОБИЛЬНЫХ ТЕЛЕФОНАХ */
+    @media (max-width: 768px) {
+      /* Вся секция услуг */
+      #services,
+      #services.fade-in,
+      #services .fade-in,
+      #services .card,
+      #services .cards {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+        visibility: visible !important;
+      }
+      
+      /* Сразу показываем все карточки */
+      #services .card {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+      
+      /* Контейнер карточек */
+      #services .cards {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        opacity: 1 !important;
+        gap: 20px !important;
+      }
+      
+      /* Убираем эффекты фильтрации если есть */
+      #services .card.hidden {
+        display: none !important;
+      }
+    }
+    
+    /* НА ПЛАНШЕТАХ (если нужно быстрее) */
+    @media (max-width: 1024px) {
+      #services .fade-in {
+        transition-duration: 0.3s !important;
+        animation-duration: 0.3s !important;
+      }
+    }
+  </style>
+
   <h2>Услуги</h2>
 
   <!-- ДОБАВЛЯЕМ ЭТОТ БЛОК ПОД ЗАГОЛОВКОМ -->
@@ -581,7 +627,7 @@
         <ul>
           <li><strong>Моушн-графика:</strong> Анимация логотипов, текста</li>
           <li><strong>Видео для бизнеса:</strong> Рекламные ролики</li>
-          <li><strong>Веб-анимация:</strong> Lottie, микроанимации</li>
+          <li><strong>Веб  -анимация:</strong> Lottie, микроанимации</li>
           <li><strong>2D/3D анимация:</strong> 2D-анимация, 3D-графика</li>
         </ul>
       </div>
@@ -663,6 +709,36 @@
     </div>
 
   </div>
+  
+  <!-- ДОПОЛНИТЕЛЬНЫЙ JS ФИКС ДЛЯ МОБИЛЬНЫХ (необязательно) -->
+  <script>
+    // Если мобильное устройство - сразу показываем всё
+    if (window.innerWidth <= 768) {
+      // Ждем загрузки DOM
+      document.addEventListener('DOMContentLoaded', function() {
+        // Находим все элементы в секции услуг
+        const servicesElements = document.querySelectorAll('#services .fade-in');
+        servicesElements.forEach(el => {
+          // Убираем класс анимации
+          el.classList.remove('fade-in');
+          // Добавляем класс visible (если используется)
+          el.classList.add('visible');
+          // Принудительно показываем
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        });
+        
+        // Также убираем fade-in у самой секции
+        document.getElementById('services')?.classList.remove('fade-in');
+      });
+      
+      // Применяем сразу (не ждем загрузки)
+      setTimeout(function() {
+        document.getElementById('services')?.style.setProperty('opacity', '1', 'important');
+      }, 100);
+    }
+  </script>
+  
 </section>
 
 <!-- НОВАЯ СЕКЦИЯ: Специалисты после услуг -->
