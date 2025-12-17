@@ -67,15 +67,39 @@ document.addEventListener("DOMContentLoaded", () => {
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-                observer.unobserve(entry.target);
+                // Добавляем класс с задержкой для каскадного эффекта
+                setTimeout(() => {
+                    entry.target.classList.add("visible");
+                }, entry.target.dataset.delay || 0);
+            } else {
+                // Убираем класс если элемент скрылся (опционально)
+                // entry.target.classList.remove("visible");
             }
         });
     }, {
-        threshold: 0.15
+        threshold: 0.05,    // Сработает при 5% видимости
+        rootMargin: '100px' // "Зона срабатывания" +100px
     });
 
-    elements.forEach(el => observer.observe(el));
+    elements.forEach((el, index) => {
+        // Добавляем задержку для каскадного эффекта
+        el.dataset.delay = index * 50;
+        observer.observe(el);
+    });
+    
+    // ФОРСИРУЕМ ПРОВЕРКУ СРАЗУ ПРИ ЗАГРУЗКЕ
+    setTimeout(() => {
+        elements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            const isVisible = (
+                rect.top <= window.innerHeight &&
+                rect.bottom >= 0
+            );
+            if (isVisible) {
+                el.classList.add("visible");
+            }
+        });
+    }, 500);
 });
 
 // =====================
