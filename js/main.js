@@ -96,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function() {
     if (filterButtonsContainer) {
         const counter = document.createElement('div');
         counter.className = 'filter-counter';
-        counter.textContent = 'Найдено услуг: ' + cards.length;
         filterButtonsContainer.parentNode.insertBefore(counter, filterButtonsContainer.nextSibling);
     }
     
@@ -113,7 +112,6 @@ document.addEventListener("DOMContentLoaded", function() {
             visibleCount = document.querySelectorAll(`.card[data-category="${filter}"]:not(.hidden)`).length;
         }
         
-        counter.textContent = `Найдено услуг: ${visibleCount}`;
     }
     
     // Функция для перекомпоновки карточек рядом друг с другом
