@@ -699,3 +699,77 @@ h1, h2, h3 {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Стили для кнопок фильтра */
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 30px 0 40px;
+  padding: 15px;
+  background: rgba(52, 152, 219, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(52, 152, 219, 0.1);
+}
+
+.filter-btn {
+  padding: 10px 20px;
+  background: white;
+  border: 2px solid #3498db;
+  color: #3498db;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.filter-btn:hover {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2);
+}
+
+.filter-btn.active {
+  background: #3498db;
+  color: white;
+  border-color: #3498db;
+}
+
+.filter-btn.active:hover {
+  background: #2980b9;
+  border-color: #2980b9;
+}
+
+/* Анимация для скрытия/показа карточек */
+.card {
+  transition: all 0.4s ease;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.card.hidden {
+  opacity: 0;
+  transform: scale(0.8);
+  height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: none;
+}
+
+/* Эффект при фильтрации */
+.cards {
+  transition: all 0.3s ease;
+}
+
+/* Счётчик найденных услуг */
+.filter-counter {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #7f8c8d;
+  font-style: italic;
+}
