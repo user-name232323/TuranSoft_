@@ -42,7 +42,7 @@ if (contactForm) {
             return;
         }
 
-        const toEmail = "dimacri558@gmail.com";
+        const toEmail = "turansoftkz@gmail.com";
 
         const subject = encodeURIComponent("Сообщение с сайта от " + name);
         const body = encodeURIComponent(
